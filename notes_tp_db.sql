@@ -40,6 +40,34 @@ LOCK TABLES `categories` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `deteled_notes`
+--
+
+DROP TABLE IF EXISTS `deteled_notes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `deteled_notes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `note_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `deteled_notes_FK` (`note_id`),
+  KEY `deteled_notes_FK_1` (`user_id`),
+  CONSTRAINT `deteled_notes_FK` FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`),
+  CONSTRAINT `deteled_notes_FK_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `deteled_notes`
+--
+
+LOCK TABLES `deteled_notes` WRITE;
+/*!40000 ALTER TABLE `deteled_notes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `deteled_notes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `notes`
 --
 
@@ -138,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-23 11:10:43
+-- Dump completed on 2021-09-23 11:19:39
